@@ -1,0 +1,29 @@
+def gitRepo="https://github.com/gestrem/pacman"
+def branch="master"
+ 
+node('template1') {
+    stage('test npm') {
+        sh("node --version")
+        sh("npm --version")
+        sh("oc whoami")
+    }
+    stage ('pull code') {
+        git branch: branch, url: gitRepo
+    }
+    stage ('build') {
+        sh("npm install")
+        sh("npm run build")
+    }
+    stage('check and prepare') {
+        sh("cd /tmp")
+        sh("pwd")
+        sh("ls -alrth")
+    }
+    stage ('deploy') {
+     
+        sh("oc new-build --binary=true --name=pacman-jenkins --image-stream=pacman-jenkins")
+        sh("oc start-build pacman-jenkins --from-dir=build --follow --wait" )
+ 
+ 
+    }
+}

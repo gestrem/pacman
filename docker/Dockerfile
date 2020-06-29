@@ -1,4 +1,4 @@
-FROM node:boron
+FROM registry.redhat.io/ubi7/nodejs-10:1-37
 
 MAINTAINER Ivan Font <ifont@redhat.com>
 
