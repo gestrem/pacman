@@ -1,4 +1,4 @@
-def gitRepo="https://github.com/gestrem/pacman"
+def gitRepo="https://github.com/gestrem/pacman.git"
 def branch="master"
  
 node('template1') {
