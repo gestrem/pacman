@@ -1,7 +1,7 @@
 def gitRepo="https://github.com/gestrem/pacman.git"
 def branch="master"
  
-node('node') {
+node('nodejs') {
     stage('test npm') {
         sh("node --version")
         sh("npm --version")
