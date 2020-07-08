@@ -1,29 +1,28 @@
 def gitRepo="https://github.com/gestrem/pacman.git"
 def branch="master"
  
-node('template1') {
-    stage('test npm') {
-        sh("node --version")
-        sh("npm --version")
-        sh("oc whoami")
-    }
-    stage ('pull code') {
-        git branch: branch, url: gitRepo
-    }
-    stage ('build') {
-        sh("npm install")
-        sh("npm run build")
-    }
-    stage('check and prepare') {
-        sh("cd /tmp")
-        sh("pwd")
-        sh("ls -alrth")
-    }
-    stage ('deploy') {
-     
-        sh("oc new-build --binary=true --name=pacman-jenkins --image-stream=pacman-jenkins")
-        sh("oc start-build pacman-jenkins --from-dir=build --follow --wait" )
- 
- 
-    }
+node('nodejs') {
+       stage ("Build"){
+            echo '*** Build Starting ***'
+
+            openshiftBuild bldCfg: 'pacman', checkForTriggeredDeployments: 'false', commitID: '', namespace: 'pacman', showBuildLogs: 'false', verbose: 'false'
+            openshiftVerifyBuild bldCfg: 'pacman', checkForTriggeredDeployments: 'false', namespace: 'pacman', verbose: 'false'
+
+
+            echo '*** Build Complete ***'
+        }
+
+        stage ("Promote image to Test"){
+
+            openshiftTag(namespace: 'pacman', srcStream: 'pacman', srcTag: 'latest', destStream: 'pacman-test', destTag: 'testready')
+
+        }
+
+        stage ("Deploy and Verify in Test Env"){
+            echo '*** Deployment Starting ***'
+            openshiftDeploy depCfg: 'pacman', namespace: 'pacman-test', verbose: 'false', waitTime: ''
+            openshiftVerifyDeployment depCfg: 'pacman', namespace: 'pacman-test', replicaCount: '1', verbose: 'false', verifyReplicaCount: 'false', waitTime: ''
+            echo '*** Deployment Complete ***'
+
+            }
 }
