@@ -1,6 +1,10 @@
 # pacman
 Pac-Man
 
+# Start developer Workspace
+
+[![Contribute](https://www.eclipse.org/che/factory-contribute.svg)](https://che.openshift.io/f?url=https://github.com/redhat-developer/devfile)
+
 ## Install dependencies
 
 ```
