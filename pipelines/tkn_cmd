@@ -1,0 +1,6 @@
+tkn pipeline start pacman-app \
+  --namespace=pacman-dev \
+  --param private-github-repo-url='https://github.com/gestrem/pacman' \
+  --workspace name=source,claimName=tekton-tutorial-sources \
+  --use-param-defaults \
+  --showlog
