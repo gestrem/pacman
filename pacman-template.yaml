@@ -1,0 +1,57 @@
+kind: Template
+apiVersion: v1
+metadata:
+  name: my-template
+  annotations:
+    openshift.io/display-name: "Build Pacman Game / Quay Registry" 
+    description: >-
+      Build the Pacman Game and push the image to Quay Registry 
+    tags: "nodejs"
+labels:
+  template: "pacman-game"
+  name: "pacman" 
+objects:
+  - kind: BuildConfig
+    apiVersion: build.openshift.io/v1
+    metadata:
+      name: build-to-quay
+      namespace: pacman-dev
+    spec:
+      output:
+        to:
+          kind: DockerImage
+          name: 'quay.io/gestrem/pacman:prod'
+      pushSecret:
+        name: "gestrem-ocp-robot-pull-secret"
+      source:
+        git:
+          ref: master
+          uri: 'https://github.com/gestrem/pacman'
+        contextDir: /
+        type: Git
+      strategy:
+        type: Source
+        sourceStrategy:
+          from:
+            kind: ImageStreamTag
+            namespace: openshift
+            name: 'nodejs:12-ubi7'
+          env: []
+      resources: {}
+      triggers:
+        - type: ImageChange
+          imageChange: {}
+        - type: ConfigChange
+  - kind: Secret 
+    apiVersion: v1
+    metadata:
+      name: gestrem-ocp-robot-pull-secret
+    data:
+      .dockerconfigjson: ewogICJhdXRocyI6IHsKICAgICJxdWF5LmlvIjogewogICAgICAiYXV0aCI6ICJaMlZ6ZEhKbGJTdHZZM0JmY205aWIzUTZVekpFUzBGT05rUklUVFZYTmtWVU1UQk9WbE5KVFVZM09GZFlUalZDVVRGV1FVeEdWalJGV1U0MFUxWlhVVUUxU2xWWFVUZElNRkV4TTBsSlRsRTFNUT09IiwKICAgICAgImVtYWlsIjogIiIKICAgIH0KICB9Cn0=
+    type: kubernetes.io/dockerconfigjson
+parameters:
+  - name: QUAY_IMAGE_TAG
+    displayName: Quay image tag
+    description: The quay image tag
+    value: dev
+    required: true 
