@@ -1,4 +1,4 @@
-FROM quay-registry-quay-quay-enterprise.apps.cluster-15ad.15ad.sandbox422.opentlc.com/goldenimages/nodejs:latest
+FROM quay-63df.apps.shared-na4.na4.openshift.opentlc.com/builder_images/nodejs:latest
 # Add application sources to a directory that the assemble script expects them
 # and set permissions so that the container runs without root access
 USER 0
