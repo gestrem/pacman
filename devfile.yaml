@@ -1,6 +1,6 @@
-schemaVersion: 2.1.0
+apiVersion: 1.0.0
 metadata:
-  name: wksp-l7u8
+  name: pacman
 projects:
   - name: pacman
     source:
@@ -17,7 +17,7 @@ components:
     memoryLimit: 512Mi
     type: dockerimage
     alias: nodejs
-    image: 'quay.io/eclipse/che-nodejs10-ubi:nightly'
+    image: 'quay.io/eclipse/che-nodejs10-ubi:7.35.2'
     env:
       - value: 220fd770-c028-480d-8f95-f84353c7d55a
         name: SECRET
