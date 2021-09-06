@@ -9,6 +9,31 @@ projects:
       branch: master
 attributes:
   persistVolumes: 'false'
+commands:
+  - id: install
+    exec:
+      component: runtime
+      commandLine: npm install
+      workingDir: /projects/nodejs-web-app/pacman
+      group:
+        kind: build
+        isDefault: true
+  - id: run
+    exec:
+      component: runtime
+      commandLine: npm run start
+      workingDir: /projects/nodejs-web-app/pacman
+      group:
+        kind: run
+        isDefault: true
+  - id: debug
+    exec:
+      component: runtime
+      commandLine: npm run debug
+      workingDir: /projects/nodejs-web-app/pacman
+      group:
+        kind: debug
+        isDefault: true
 components:
   - mountSources: true
     endpoints:
