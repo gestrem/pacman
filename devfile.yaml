@@ -10,30 +10,18 @@ projects:
 attributes:
   persistVolumes: 'false'
 commands:
-  - id: install
-    exec:
-      component: runtime
-      commandLine: npm install
-      workingDir: /projects/nodejs-web-app/pacman
-      group:
-        kind: build
-        isDefault: true
-  - id: run
-    exec:
-      component: runtime
-      commandLine: npm run start
-      workingDir: /projects/nodejs-web-app/pacman
-      group:
-        kind: run
-        isDefault: true
-  - id: debug
-    exec:
-      component: runtime
-      commandLine: npm run debug
-      workingDir: /projects/nodejs-web-app/pacman
-      group:
-        kind: debug
-        isDefault: true
+  - name: 1. Download dependencies
+    actions:
+      - type: exec
+        component: nodejs
+        command: npm install
+        workdir: '${CHE_PROJECTS_ROOT}/nodejs-web-app/pacman'
+  - name: 2. Run the web app 
+    actions:
+      - type: exec
+        component: nodejs
+        command: npm start
+        workdir: '${CHE_PROJECTS_ROOT}/nodejs-web-app/pacman'
 components:
   - mountSources: true
     endpoints:
