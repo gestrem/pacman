@@ -1,6 +1,3 @@
-apiVersion: 2.0.0
-devWorkspace:
-    enable: true
 metadata:
   name: wksp-l7u8
 projects:
