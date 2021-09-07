@@ -21,7 +21,7 @@ router.get('/id', function(req, res, next) {
             return next(err);
         }
 
-        // Insert user ID and return back generated ObjectId1
+        // Insert user ID and return back generated ObjectId12
         var userId = 0;
         db.collection('userstats').insertOne({
             date: Date()
