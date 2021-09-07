@@ -1,27 +1,14 @@
 apiVersion: 1.0.0
 metadata:
   name: pacman
+attributes:
+  persistVolumes: 'false'
 projects:
   - name: pacman
     source:
       location: 'https://github.com/gestrem/pacman.git'
       type: git
       branch: master
-attributes:
-  persistVolumes: 'false'
-commands:
-  - name: 1. Download dependencies
-    actions:
-      - type: exec
-        component: nodejs
-        command: npm install
-        workdir: '${CHE_PROJECTS_ROOT}/nodejs-web-app/pacman'
-  - name: 2. Run the web app 
-    actions:
-      - type: exec
-        component: nodejs
-        command: npm start
-        workdir: '${CHE_PROJECTS_ROOT}/nodejs-web-app/pacman'
 components:
   - mountSources: true
     endpoints:
@@ -37,10 +24,10 @@ components:
       - value: production
         name: NODE_ENV
   - endpoints:
-      - name: mongodb-34-centos7
-        attributes:
+      - attributes:
           discoverable: 'true'
           public: 'false'
+        name: mongodb-34-centos7
         port: 27017
     memoryLimit: 512Mi
     type: dockerimage
@@ -58,4 +45,24 @@ components:
         name: MONGODB_DATABASE
       - value: password
         name: MONGODB_ADMIN_PASSWORD
-
+  - id: redhat/vscode-yaml/latest
+    type: chePlugin
+  - id: vscode/typescript-language-features/latest
+    type: chePlugin
+  - id: redhat/vscode-xml/latest
+    type: chePlugin
+  - id: redhat/vscode-openshift-connector/latest
+    type: chePlugin
+commands:
+  - name: 1. Download dependencies
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/pacman'
+        type: exec
+        command: npm install
+        component: nodejs
+  - name: 2. Run the web app
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/pacman'
+        type: exec
+        command: npm run start
+        component: nodejs
