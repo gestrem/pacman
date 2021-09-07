@@ -51,8 +51,6 @@ components:
     type: chePlugin
   - id: redhat/vscode-xml/latest
     type: chePlugin
-  - id: redhat/vscode-openshift-connector/latest
-    type: chePlugin
 commands:
   - name: 1. Download dependencies
     actions:
