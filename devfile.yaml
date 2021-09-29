@@ -17,7 +17,7 @@ components:
     memoryLimit: 512Mi
     type: dockerimage
     alias: nodejs
-    image: 'quay.io/eclipse/che-nodejs10-ubi:latest'
+    image: 'quay.io/eclipse/che-nodejs10-ubi:next'
     env:
       - value: 220fd770-c028-480d-8f95-f84353c7d55a
         name: SECRET
