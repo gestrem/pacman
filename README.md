@@ -3,7 +3,7 @@ Pac-Man
 
 # Start developer Workspace
 
-[![Contribute](https://www.eclipse.org/che/factory-contribute.svg)](https://codeready-openshift-workspaces.apps.cluster-pqp6f.pqp6f.sandbox1416.opentlc.com/f?url=https://github.com/gestrem/pacman)
+[![Contribute](https://www.eclipse.org/che/factory-contribute.svg)](https://console-openshift-console.apps.cluster-6zjvd.6zjvd.sandbox311.opentlc.com/f?url=https://github.com/gestrem/pacman)
 
 ## Install dependencies
 
