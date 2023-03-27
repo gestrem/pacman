@@ -3,7 +3,12 @@ Pac-Man
 
 # Start developer Workspace
 
-[![Contribute](https://www.eclipse.org/che/factory-contribute.svg)](https://devspaces.apps.cluster-8hm6t.8hm6t.sandbox1482.opentlc.com/#https://github.com/gestrem/pacman)
+### Avec l'IDE basé sur THEIA
+[![Contribute](https://www.eclipse.org/che/factory-contribute.svg)](https://devspaces.apps.cluster-m75cw.m75cw.sandbox2192.opentlc.com#https://github.com/gestrem/pacman?che-editor=eclipse/che-theia/latest)
+
+### Avec l'IDE basé sur VSCode
+[![Contribute](https://www.eclipse.org/che/factory-contribute.svg)](https://devspaces.apps.cluster-m75cw.m75cw.sandbox2192.opentlc.com#https://github.com/gestrem/pacman)
+
 
 ## Install dependencies
 
