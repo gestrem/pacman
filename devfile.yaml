@@ -15,13 +15,13 @@ commands:
       - type: exec
         component: nodejs
         command: npm install
-        workdir: '${CHE_PROJECTS_ROOT}/nodejs-web-app/pacman'
+        workdir: '${CHE_PROJECTS_ROOT}/pacman'
   - name: 2. Run the web app 
     actions:
       - type: exec
         component: nodejs
-        command: npm start
-        workdir: '${CHE_PROJECTS_ROOT}/nodejs-web-app/pacman'
+        command: npm run start
+        workdir: '${CHE_PROJECTS_ROOT}/pacman'
 components:
   - mountSources: true
     endpoints:

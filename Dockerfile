@@ -1,4 +1,4 @@
-FROM quay-63df.apps.shared-na4.na4.openshift.opentlc.com/builder_images/nodejs:latest
+FROM  quay.apps.bm1.redhat.hpecic.net/builder_images/nodejs:latest
 # Add application sources to a directory that the assemble script expects them
 # and set permissions so that the container runs without root access
 USER 0

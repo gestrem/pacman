@@ -20,7 +20,7 @@ function geronimo() {
     var context;
     var game;
     var canvas_walls, context_walls;
-    var inky, blinky, clyde, pinky;
+    var inky, blinky, clyde, pinky, toto;
 
     var mapConfig = "data/map.json";
 
@@ -295,7 +295,7 @@ function geronimo() {
         this.map;
         this.pillCount;                // number of pills
         this.monsters;
-        this.level = 10;
+        this.level = 1;
         this.refreshLevel = function(h) {
             $(h).html("Level: "+this.level);
         };
@@ -558,18 +558,21 @@ function geronimo() {
                 inky = new Ghost("inky",8,5,'img/inky.svg',13,11);
                 blinky = new Ghost("blinky",9,5,'img/blinky.svg',13,0);
                 clyde = new Ghost("clyde",10,5,'img/clyde.svg',2,11);
+                toto = new Ghost("toto",10,5,'img/clyde.svg',2,11);
             }
             else {
                 //console.log("ghosts reset");
                 pinky.reset();
                 inky.reset();
                 blinky.reset();
-                clyde.reset();
+                //clyde.reset();
+                //toto.reset();
             }
             blinky.start();    // blinky is the first to leave ghostHouse
             inky.start();
             pinky.start();
-            clyde.start();
+           // clyde.start();
+            //toto.start();
         };
 
         this.check = function() {
