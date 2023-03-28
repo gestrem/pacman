@@ -3,8 +3,6 @@ Pac-Man
 
 # Start developer Workspace
 
-### Avec l'IDE basé sur THEIA
-[![Contribute](https://www.eclipse.org/che/factory-contribute.svg)](https://devspaces.apps.cluster-m75cw.m75cw.sandbox2192.opentlc.com#https://github.com/gestrem/pacman?che-editor=eclipse/che-theia/latest)
 
 ### Avec l'IDE basé sur VSCode
 [![Contribute](https://www.eclipse.org/che/factory-contribute.svg)](https://devspaces.apps.cluster-m75cw.m75cw.sandbox2192.opentlc.com#https://github.com/gestrem/pacman)
