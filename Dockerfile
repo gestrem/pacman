@@ -1,4 +1,4 @@
-FROM  quay.apps.bm1.redhat.hpecic.net/builder_images/nodejs:latest
+FROM  example-registry-quay-quay-enterprise.apps.cluster-7smv6.7smv6.sandbox3031.opentlc.com/customer-1/nodejs:1-139
 # Add application sources to a directory that the assemble script expects them
 # and set permissions so that the container runs without root access
 USER 0
