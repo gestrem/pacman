@@ -1,14 +1,13 @@
-schemaVersion: 2.1.0
+schemaVersion: 2.2.0
 metadata:
   name: nodejs-web-app
 attributes:
   persistVolumes: 'false'
 projects:
   - name: pacman
-    source:
-      location: 'https://github.com/gestrem/pacman.git'
-      type: git
-      branch: master
+    git:
+      remotes:
+        origin: 'https://github.com/gestrem/pacman.git'
 attributes:
   persistVolumes: 'false'
 commands:
