@@ -17,22 +17,33 @@ commands:
       - type: exec
         component: nodejs
         command: npm install
-        workdir: '${CHE_PROJECTS_ROOT}/nodejs-web-app/pacman'
+        workdir: '${PROJECTS_ROOT}/nodejs-web-app/pacman'
   - name: 2. Run the web app 
     actions:
       - type: exec
         component: nodejs
         command: npm start
-        workdir: '${CHE_PROJECTS_ROOT}/nodejs-web-app/pacman'
+        workdir: '${PROJECTS_ROOT}/nodejs-web-app/pacman'
 components:
-  - mountSources: true
-    endpoints:
-      - name: nodejs
-        port: 8080
-    memoryLimit: 512Mi
-    type: dockerimage
-    alias: nodejs
-    image: 'quay.io/eclipse/che-nodejs10-ubi:next'
+  - name: nodejs
+    container:
+      image: registry.redhat.io/devspaces/udi-rhel8:3.8
+      endpoints:
+        - exposure: public
+          name: nodejs
+          protocol: http
+          targetPort: 8080
+      memoryLimit: '1Gi'
+      memoryRequest: '512Mi'
+      cpuLimit: '0.5'
+      cpuRequest: '0.25'
+      mountSources: true
+      volumeMounts:
+        - name: npm
+          path: /home/user/.npm
+  - name: npm
+    volume:
+      size: 1G
     env:
       - value: 220fd770-c028-480d-8f95-f84353c7d55a
         name: SECRET
@@ -69,13 +80,13 @@ components:
 commands:
   - name: 1. Download dependencies
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/pacman'
+      - workdir: '${PROJECTS_ROOT}/pacman'
         type: exec
         command: npm install
         component: nodejs
   - name: 2. Run the web app
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/pacman'
+      - workdir: '${PROJECTS_ROOT}/pacman'
         type: exec
         command: npm run start
         component: nodejs
