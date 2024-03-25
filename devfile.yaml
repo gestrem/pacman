@@ -1,6 +1,6 @@
-apiVersion: 1.0.0
+schemaVersion: 2.1.0
 metadata:
-  name: pacman
+  name: nodejs-web-app
 attributes:
   persistVolumes: 'false'
 projects:
